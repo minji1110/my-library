@@ -10,6 +10,4 @@ URL: http://minji1110.github.io/my-library
 
 ## Tools
 
-#
-
 ### React , SpringBoot , kakao dapi-Open API
