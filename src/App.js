@@ -1,9 +1,11 @@
 import React from "react";
+import "./App.css";
+import Header from "./header/Header.js";
 
 function App() {
   return (
-    <div>
-      <h1>Hello! This is my library!</h1>
+    <div className="App">
+      <Header />
     </div>
   );
 }
