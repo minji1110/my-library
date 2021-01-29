@@ -1,13 +1,38 @@
-import React from "react";
-import "./App.css";
-import Header from "./header/Header.js";
+import React, { useState } from 'react';
+import axios from 'axios';
+import Search from './component/Search';
+import Header from './header/Header.js';
+import BookList from './component/BookList';
 
-function App() {
+const kakao = axios.create({
+  baseURL: 'https://dapi.kakao.com',
+  headers: {
+    Authorization: 'KakaoAK 1345794fdd4b8c268cc7ff2b244e7dbf',
+  },
+});
+
+const App = () => {
+  const [bookList, setBookList] = useState([]);
+
+  const onSearch = async (inputValue) => {
+    try {
+      const response = await kakao.get('/v3/search/book', {
+        params: { query: inputValue },
+      });
+      setBookList(response.data.documents);
+      console.log(response.data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
-    <div className="App">
+    <div>
       <Header />
+      <Search onSearch={onSearch} />
+      <BookList list={bookList} />
     </div>
   );
-}
+};
 
 export default App;
