@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { MdSearch } from 'react-icons/md';
+import './style.css';
 
 const Search = ({ onSearch }) => {
   const [inputValue, setInputValue] = useState('');
@@ -14,13 +16,15 @@ const Search = ({ onSearch }) => {
 
   return (
     <div>
-      <form className="search" onSubmit={onSubmit}>
+      <form className="form" onSubmit={onSubmit}>
         <input
           placeholder="검색어를 입력하세요."
           value={inputValue}
           onChange={onChange}
         />
-        <button type="submit">검색</button>
+        <button type="submit">
+          <MdSearch color="gray" size="30" />
+        </button>
       </form>
     </div>
   );

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Search from './component/Search';
-import Header from './header/Header.js';
 import BookList from './component/BookList';
+import Container from './component/Container';
 
 const kakao = axios.create({
   baseURL: 'https://dapi.kakao.com',
@@ -28,9 +28,10 @@ const App = () => {
 
   return (
     <div>
-      <Header />
-      <Search onSearch={onSearch} />
-      <BookList list={bookList} />
+      <Container>
+        <Search onSearch={onSearch} />
+        <BookList list={bookList} />
+      </Container>
     </div>
   );
 };
