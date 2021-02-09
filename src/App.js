@@ -14,11 +14,14 @@ const kakao = axios.create({
 const App = () => {
   const [bookList, setBookList] = useState([]);
 
-  const onSearch = async (inputValue) => {
+  const onSearch = async (searchValue, inputValue) => {
     try {
-      const response = await kakao.get('/v3/search/book', {
-        params: { query: inputValue },
-      });
+      const response = await kakao.get(
+        `/v3/search/book?target=${searchValue}`,
+        {
+          params: { query: inputValue },
+        }
+      );
       setBookList(response.data.documents);
       console.log(response.data);
     } catch (e) {
